@@ -1,0 +1,18 @@
+{
+	"manifest_version": 3,
+	"name": "YTM-Discord",
+	"version": "1.0",
+	"description": "Displays now playing information from Youtube Music on discord.",
+	"host_permissions": ["http://localhost/*"],
+	"background": {
+		"service_worker": "background.js"
+	},
+	"content_scripts": [
+		{
+			"matches": [ "https://music.youtube.com/*" ],
+			"js": [ "content.js" ],
+			"all_frames": false,
+			"run_at": "document_idle"
+		}
+	]
+}
