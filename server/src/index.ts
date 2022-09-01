@@ -4,7 +4,10 @@ import { YTMUpdateData } from "./types";
 
 const client = new Client({clientId: "1012940949191659600"});
 client.on("connected", () => console.log("i | Connected to discord: "+client.user?.tag));
-client.login();
+client.login().catch((e) => {
+	console.log("! | Failed to log in to discord:",e);
+	process.exit(1);
+});
 
 const app = express();
 app.use(express.json());
@@ -24,7 +27,7 @@ app.post("/status", (req, res) => {
 			// Fallback to youtube music homepage.
 			{label: "Listen Along", url: data.link ?? "https://music.youtube.com"}
 		]
-	});
+	}).catch((e) => console.log("! | Failed to set status:",e));
 });
 
 app.delete("/status", (_, res) => {
