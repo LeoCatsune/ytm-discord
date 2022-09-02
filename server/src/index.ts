@@ -25,7 +25,7 @@ app.post("/status", (req, res) => {
 		smallImageText: data.state[0].toUpperCase() + data.state.slice(1),
 		buttons: [
 			// Fallback to youtube music homepage.
-			{label: "Listen Along", url: data.link ?? "https://music.youtube.com"}
+			{label: "Play on Youtube Music", url: data.link ?? "https://music.youtube.com"}
 		]
 	}).catch((e) => console.log("! | Failed to set status:",e));
 });
